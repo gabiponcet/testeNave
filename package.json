@@ -4,17 +4,24 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon src/server.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/gabiponcet/testeNave.git"
-  },
+  "repository": "git+https://github.com/gabiponcet/testeNave.git",
   "keywords": [],
-  "author": "",
+  "author": "Gabriela Poncet <gabiponcet@gmail.com>",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/gabiponcet/testeNave/issues"
   },
-  "homepage": "https://github.com/gabiponcet/testeNave#readme"
+  "homepage": "https://github.com/gabiponcet/testeNave#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "pg": "^7.18.2",
+    "pg-hstore": "^2.3.3",
+    "sequelize": "^5.21.5"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2",
+    "sequelize-cli": "^5.5.1"
+  }
 }
