@@ -1,16 +1,30 @@
-const Post = require('../models/Comment');
+const Post = require('../models/Post');
 const Comment = require('../models/Comment');
+const sequelize = require('sequelize');
 
 module.exports = {
     async index(req,res) {
-        const { post_id } = req.params;
-      
-        const post = await Post.findAll({
-          where: {id: post_id},
-          include: {
-            model: Comment
-          }});
-        return res.json(post);
+        const { count } = req.query;
+            if(count){
+                const { post_id } = req.params;
+                const post = await Post.findAll({
+                    where: {id: post_id},
+                    include: {
+                    association: 'comments'
+                    },
+                    attributes: [[sequelize.fn('COUNT', sequelize.col('post_id'))]]
+                  });
+                  return res.json(post);
+            }
+            else{
+                const { post_id } = req.params;
+                const post = await Post.findAll({
+                    where: {id: post_id},
+                    include: {
+                    association: 'comments'
+                    }});
+                return res.json(post);
+            }
       
       },
     
